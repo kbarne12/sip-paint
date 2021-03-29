@@ -3,18 +3,21 @@ const Class = require('../models/class')
 
 module.exports = {
     index,
+    new: newClass,
+    
 }
 
+function newClass(req, res) {
+    res.render('classes/new', {title: 'Add Classes',
+    user: req.user
+})
+}
 
 function index(req, res) {
-    Class.findById({}, function (err, classes) {
-        res.render('classes/index', {
-            title: 'Classes',
-            level,
-            instructor,
-            rating
+    res.render('classes/index', {
+    title: "Classes",
+    user: req.user
 
+})
+}
 
-        })
-    })
-  }

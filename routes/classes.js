@@ -1,7 +1,8 @@
 const router = require('express').Router()
 const classCtrl = require('../controllers/classes')
 
-router.get("/", isLoggedIn, classCtrl.index)
+router.get("/", isLoggedIn, classCtrl.index);
+router.get('/new', isLoggedIn, classCtrl.new);
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();

@@ -1,24 +1,20 @@
 <%- include('../partials/header') %> 
 <p>Welcome to <%= title %></p>
 <table id='list'>
-    <thead>
-      <tr>
-        <th>Gallery</th>
-        <th>Level</th>
-        <th>Instructor</th>
-        <th>Rating</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% classes.forEach((c) => { %>
-        <tr>
-          <td><%= c.price %></td>
-          <td><%= c.level %></td>
-          <td><%= c.instructor %></td>
-          <td><%= c.rating %></td>
-          <!-- <td><a href="/flights/<%= f._id %>"> FLIGHT DETAILS</a></td> -->
-        </tr>
-      <% }) %>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <a 
+      href="/classes/new" 
+      <%- title === 'Add Class' ? 'class="active"' : '' %>
+    >ADD Class</a>
+     
+  </tbody>
+</table>
 <%- include('../partials/footer') %> 

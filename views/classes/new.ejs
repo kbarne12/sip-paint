@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/classes" method="POST">
+  <label>Location:</label>
+  <select name="location">
+      <option value="Virtual">Virtual</option>
+      <option value="Dupont">Dupont</option>
+      <option value="AdamsMorgan">Adams Morgan</option>
+  </select>
+  <label>Title:</label>
+  <select name="title">
+        <option value="Date Night">Date Night</option>
+        <option value="Amatuer Night">Amatuer Night</option>
+        <option selected value="Free paint">Free Paint</option>
+        <option value="">Corporate Paint</option>
+    </select>
+  <label>Price:</label>
+  <input type="number" min='10' max='100' name="price">
+  <label>Rating:</label>
+  <input type="number" min='1' max='10' name="price">
+  <input type="submit" value="Add class">
+</form>
