@@ -3,6 +3,7 @@ const classCtrl = require('../controllers/classes')
 
 router.get("/", isLoggedIn, classCtrl.index);
 router.get('/new', isLoggedIn, classCtrl.new);
+router.get('/:classId', classCtrl.show)
 router.post('/', isLoggedIn, classCtrl.create);
 
 function isLoggedIn(req, res, next) {

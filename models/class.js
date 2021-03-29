@@ -6,8 +6,6 @@ const classSchema = new Schema(
     title: String,
     price: Number,
     rating: Number,
-    startDate: Date,
-    level: String,
     location: String,
     students: [{type: Schema.Types.ObjectId, ref: "User"}],
     instructor: {type: Schema.Types.ObjectId}
@@ -17,4 +15,4 @@ const classSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model('Class', classSchema);
+module.exports = mongoose.model('Lesson', classSchema);

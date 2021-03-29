@@ -7,16 +7,23 @@
       <option value="Dupont">Dupont</option>
       <option value="AdamsMorgan">Adams Morgan</option>
   </select>
+  <label>Instructor</label>
+  <select name="instructor">
+      <%users.forEach(user => {%>
+        <option value="<%=user._id%>"><%=user.name%></option>
+        <% }) %> 
+</select>
   <label>Title:</label>
   <select name="title">
         <option value="Date Night">Date Night</option>
         <option value="Amatuer Night">Amatuer Night</option>
         <option selected value="Free paint">Free Paint</option>
-        <option value="">Corporate Paint</option>
+        <option value="Corporate Paint">Corporate Paint</option>
     </select>
   <label>Price:</label>
   <input type="number" min='10' max='100' name="price">
   <label>Rating:</label>
-  <input type="number" min='1' max='10' name="price">
+  <input type="number" min='1' max='10' name="rating">
   <input type="submit" value="Add class">
+  
 </form>

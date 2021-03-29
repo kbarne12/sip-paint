@@ -1,24 +1,33 @@
-const Class = require('../models/class')
-
+const Lesson = require('../models/class')
+const User = require('../models/user')
 
 module.exports = {
     index,
     new: newClass,
-    create
+    show,
+    create,
     
 }
-function create(req, res) {
-    const classs = new Class(req.body);
-    classs.save(function(err) {
-        if(err) return res.render('classes/new');
-        res.redirect(`/classes/${classs._id}`,{title: '',
-        user: req.user
-    })
+function create (req, res) {
+    Lesson.create(req.body, (err, lesson) => {
+        res.render("classes/show", { user: req.user, lesson, title: "lesson"})
     })
 }
+function show (req, res) {
+    User.findById(req.user._id, (err, user) => {
+      
+        res.render('classes/show', {
+          user: req.user
+        })
+    })
+  }
+
 function newClass(req, res) {
-    res.render('classes/new', {title: 'Add Classes',
-    user: req.user
+    User.find({}, (err, users) => {
+        res.render('classes/new', {title: 'Add Classes',
+        user: req.user,
+        users
+    })
 })
 }
 
