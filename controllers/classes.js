@@ -6,7 +6,14 @@ module.exports = {
     new: newClass,
     show,
     create,
+    delete: deleteLesson
     
+}
+function deleteLesson (req, res) {
+    Lesson.findByIdAndDelete(req.params.id)
+    .then(()=> {
+        res.redirect('/classes')
+    })
 }
 function create (req, res) {
     Lesson.create(req.body, (err, lesson) => {
