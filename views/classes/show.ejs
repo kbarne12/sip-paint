@@ -8,6 +8,12 @@
   <div><%= lesson.price %></div>
   <div>Rating: </div>
   <div><%= lesson.rating %></div>
+  <div>Instructor: </div>
+  <div><%= lesson.instructor.name %></div>
+  <form action="/classes/<%= lesson._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete</button>
+  </form>
 </section>
+<a href="/classes/<%= lesson._id %>/edit">Edit</a>
 
 <%- include('../partials/footer') %>

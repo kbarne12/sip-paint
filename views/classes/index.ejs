@@ -16,9 +16,7 @@
     >ADD Class</a>
     <% lessons.forEach( l => { %>
       <li>
-          <form action="/classes/<%= l._id %>?_method=DELETE" method="POST">
-              <button type="submit">X</button>
-          </form>
+        
           <a href="/classes/<%= l._id %>"><%= l.title %></a>
           
          </li><br>

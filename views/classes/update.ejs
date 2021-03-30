@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/classes/<%= lesson._id%>/update?_method=PUT" method="POST">
+  <label>Location:</label>
+  <select name="location">
+    <%locations.forEach(location => {%>
+        <% if (location === lesson.location ){%>
+
+            <option selected value="<%=location%>"><%=location%></option>
+        <%}else{%>
+            <option value="<%=location%>"><%=location%></option>  
+        <%} %> 
+        <% }) %> 
+  </select>
+  <label>Instructor</label>
+  <select name="instructor">
+      <%users.forEach(user => {%>
+        <% if (user._id === lesson.instructor ){%>
+
+            <option selected value="<%=user._id%>"><%=user.name%></option>
+        <%}else{%>
+            <option value="<%=user._id%>"><%=user.name%></option>  
+        <%} %> 
+        <% }) %> 
+</select>
+  <label>Title:</label>
+  <select name="title">
+    <%titles.forEach(title => {%>
+        <% if (title === lesson.title ){%>
+
+            <option selected value="<%=title%>"><%=title%></option>
+        <%}else{%>
+            <option value="<%=title%>"><%=title%></option>  
+        <%} %> 
+        <% }) %> 
+    </select>
+  <label>Price:</label>
+  <input type="number" min='10' max='100' name="price" value='<%= lesson.price %>'>
+  <label>Rating:</label>
+  <input type="number" min='1' max='10' name="rating" value='<%= lesson.rating %>'>
+  <input type="submit" value="Update class">
+  
+</form>
+<%- include('../partials/footer') %>
