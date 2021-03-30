@@ -21,10 +21,11 @@ function create (req, res) {
     })
 }
 function show (req, res) {
-    User.findById(req.user._id, (err, user) => {
+    User.findById(req.user._id, (err, users) => {
       
         res.render('classes/show', {
-          user: req.user
+          user: req.user,
+          users
         })
     })
   }
@@ -39,10 +40,12 @@ function newClass(req, res) {
 }
 
 function index(req, res) {
+    Lesson.find({}, function(err, lessons){
     res.render('classes/index', {
     title: "Classes",
-    user: req.user
-
+    user: req.user, 
+    lessons
+})
 })
 }
 
