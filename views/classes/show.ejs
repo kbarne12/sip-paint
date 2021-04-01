@@ -5,15 +5,38 @@
   <div>Title: </div>
   <div><%= lesson.title %></div>
   <div>Price: </div>
-  <div><%= lesson.price %></div>
-  <div>Rating: </div>
-  <div><%= lesson.rating %></div>
+  <div>$<%= lesson.price %></div>
   <div>Instructor: </div>
   <div><%= lesson.instructor.name %></div>
+  <img src="<%=pictures[`${lesson.title}`] %>" alt="">
+  
   <form action="/classes/<%= lesson._id %>?_method=DELETE" method="POST">
     <button type="submit">Delete</button>
   </form>
 </section>
 <a href="/classes/<%= lesson._id %>/edit">Edit</a>
+<form action='/classes/<%= lesson._id%>' method='POST'>
+  <label>Review:</label>
+    <input type="text"  name="content">
+    <input type="number" name="rating" >
+    <input type="text" name="reviewer" hidden value="<%= user._id%>">
+    <input type="submit" value="Add review">
+</form>
+
+<% let total = 0 %>
+<% lesson.reviews.forEach(r => { %>
+  <% total+= r.rating %>
+  <p>
+    <%= r.rating %> - 
+    <img width="20" id="avatar" src="<%= r.reviewer.avatar %>" alt="">
+    <%= r.reviewer.name %>
+  </p>
+  <p><%= r.content %></p>
+<% }) %>
+<p>
+  
+  Average Rating: <%= total/lesson.reviews.length%> 
+</p>
+ 
 
 <%- include('../partials/footer') %>

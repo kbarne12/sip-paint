@@ -8,9 +8,20 @@ module.exports = {
     create,
     delete: deleteLesson,
     edit,
-    update
+    update,
+    createReview,
     
 }
+function createReview(req, res) {
+    Lesson.findById(req.params.id)
+    .then((lesson) => {
+      lesson.reviews.push(req.body)
+      lesson.save()
+      .then(()=> {
+        res.redirect(`/classes/${lesson._id}`)
+      })
+    })
+  }
 function update(req, res) {
     Lesson.findByIdAndUpdate(req.params.id, req.body)
     .then((lesson) =>{
@@ -43,17 +54,26 @@ function deleteLesson (req, res) {
 }
 function create (req, res) {
     Lesson.create(req.body, (err, lesson) => {
-        res.render("classes/show", { user: req.user, lesson, title: "lesson"})
+        res.render("classes/show", { user: req.user, lesson, title: "lesson", }            
+        )
     })
 }
 function show (req, res) {
+    const pictures = {
+        'Date Night': 'https://tse3.mm.bing.net/th?id=OIP.gAdeWO-awkFVY3zh5IENzwHaDt&pid=Api&P=0&w=300&h=300'
+    }
     Lesson.findById(req.params.id) 
     .populate('instructor')
+    .populate({path: 'reviews', populate: {path: 'reviewer'}})
     .then((lesson) => {
         res.render('classes/show', {
           user: req.user,
           title: "Lesson Details",
-          lesson
+          lesson,
+          pictures
+          
+          
+
         })
     })
     }
@@ -63,6 +83,8 @@ function newClass(req, res) {
         res.render('classes/new', {title: 'Add Classes',
         user: req.user,
         users,
+        
+        
       
     })
 })
