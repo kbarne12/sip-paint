@@ -60,7 +60,9 @@ function create (req, res) {
 }
 function show (req, res) {
     const pictures = {
-        'Date Night': 'https://tse3.mm.bing.net/th?id=OIP.gAdeWO-awkFVY3zh5IENzwHaDt&pid=Api&P=0&w=300&h=300'
+        'Date Night': 'https://tse3.mm.bing.net/th?id=OIP.gAdeWO-awkFVY3zh5IENzwHaDt&pid=Api&P=0&w=300&h=300',
+        'Amatuer Night': 'https://www.artfunstudio.com/wp-content/uploads/2017/03/sip-and-paint-0933-2.jpg'
+        
     }
     Lesson.findById(req.params.id) 
     .populate('instructor')

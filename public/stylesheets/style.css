@@ -19,6 +19,7 @@ html {
 
 body {
   background-color: gray;
+  background-image: url(https://stanhopenj.gov/wp-content/uploads/2017/05/paint-sip-e1495549666813-1024x502.jpg);
   /* Use a system font, if none are available use an available sans-sarif font */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
