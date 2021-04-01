@@ -7,6 +7,7 @@ router.get('/:id', isLoggedIn, classCtrl.show)
 router.get('/:id/edit', isLoggedIn, classCtrl.edit)
 router.post('/', isLoggedIn, classCtrl.create);
 router.post("/:id", isLoggedIn, classCtrl.createReview)
+router.post("/register/:id", isLoggedIn, classCtrl.register)
 router.delete('/:id', isLoggedIn, classCtrl.delete);
 router.put('/:id/update', isLoggedIn, classCtrl.update)
 

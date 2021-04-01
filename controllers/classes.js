@@ -10,7 +10,21 @@ module.exports = {
     edit,
     update,
     createReview,
+    register
     
+}
+function register (req, res) {
+    console.log(req.params.id)
+    Lesson.findById(req.params.id, (err, lesson) => {
+      lesson.students.push(req.body.students)
+      console.log(lesson)
+      lesson.save()
+      .then(()=> {
+        res.redirect(`/classes/${lesson._id}`)
+    }).catch(err =>{
+        console.log(err)
+    })
+  })
 }
 function createReview(req, res) {
     Lesson.findById(req.params.id)

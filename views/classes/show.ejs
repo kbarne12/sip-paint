@@ -2,13 +2,21 @@
 <section id="show-page">
   <div>Location: </div>
   <div><%= lesson.location %></div>
-  <div>Title: </div>
-  <div><%= lesson.title %></div>
+  <div class="classTitle">
+    <div>Title: </div>
+    <div><%= lesson.title %></div>
+  </div>
   <div>Price: </div>
   <div>$<%= lesson.price %></div>
   <div>Instructor: </div>
   <div><%= lesson.instructor.name %></div>
-  <img src="<%=pictures[`${lesson.title}`] %>" alt="">
+  <img class="classImg" src="<%=pictures[`${lesson.title}`] %>" alt="">
+
+  <form action="/classes/register/<%=lesson._id%>" method="POST">
+    <input type="text" hidden name="students" value="<%=user._id%>">
+    <button type="submit">Register</button>
+  </form>
+ 
   
   <form action="/classes/<%= lesson._id %>?_method=DELETE" method="POST">
     <button type="submit">Delete</button>
