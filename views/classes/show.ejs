@@ -9,7 +9,8 @@
   <div>Price: </div>
   <div>$<%= lesson.price %></div>
   <div>Instructor: </div>
-  <div><%= lesson.instructor.name %></div>
+  <div><%= lesson.instructor._id %></div>
+  <div><%=user._id%></div>
   <img class="classImg" src="<%=pictures[`${lesson.title}`] %>" alt="">
 
   <form action="/classes/register/<%=lesson._id%>" method="POST">
@@ -17,10 +18,15 @@
     <button type="submit">Register</button>
   </form>
  
-  
-  <form action="/classes/<%= lesson._id %>?_method=DELETE" method="POST">
-    <button type="submit">Delete</button>
-  </form>
+  <% if(lesson.instructor._id.toString() === user._id.toString()){%>
+    <form action="/classes/<%= lesson._id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete</button>
+    </form>
+    <% }else{ %> 
+      <p></p>
+  <%}%>
+    
+
 </section>
 <a href="/classes/<%= lesson._id %>/edit">Edit</a>
 </p>
