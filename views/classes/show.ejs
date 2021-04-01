@@ -1,16 +1,28 @@
 <%- include('../partials/header') %>
-<section id="show-page">
-  <div>Location: </div>
-  <div><%= lesson.location %></div>
-  <div class="classTitle">
-    <div>Title: </div>
-    <div><%= lesson.title %></div>
+<section class="layout" id="show-page">
+  <div class="description">
+    <div class="left">
+      <div class="location">
+        <div>Location: </div>
+        <div><%= lesson.location %></div>
+      </div>
+      <div class="classTitle">
+        <div>Title: </div>
+        <div><%= lesson.title %></div>
+      </div>
+      <div class="price">
+        <div>Price: </div>
+        <div>$<%= lesson.price %></div>
+      </div>
+      <div class="instructor">
+        <div>Instructor: </div>
+        <div><%= lesson.instructor.name %></div>
+      </div>
+    </div>
+    <div class="right">
+      <img class="photo" src="<%=pictures[`${lesson.title}`] %>" alt="">
+    </div>
   </div>
-  <div>Price: </div>
-  <div>$<%= lesson.price %></div>
-  <div>Instructor: </div>
-  <div><%= lesson.instructor.name %></div>
-  <img class="classImg" src="<%=pictures[`${lesson.title}`] %>" alt="">
 
 <%if(!lesson.students.includes(user._id)){%>
   <form action="/classes/register/<%=lesson._id%>" method="POST">
@@ -18,13 +30,7 @@
     <button type="submit">Register</button>
   </form>
   <% } %>
-  <% if(lesson.instructor._id.toString() === user._id.toString()){%>
-    <form action="/classes/<%= lesson._id %>?_method=DELETE" method="POST">
-      <button type="submit">Delete</button>
-    </form>
-    <% }else{ %> 
-      <p></p>
-  <%}%>
+  
     
 
 </section>

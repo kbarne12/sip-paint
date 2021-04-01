@@ -1,20 +1,22 @@
 <%- include('../partials/header') %> 
 <p>Welcome to <%= title %></p>
-<table id='list'>
+<table class="table" id='list'>
   
   <tbody>
-    <a 
-      href="/classes/new" 
-      <%- title === 'Add Class' ? 'class="active"' : '' %>
-    >ADD Class</a>
+    <div class="lessons">
+        <a class="addclass"
+        href="/classes/new" 
+        <%- title === 'Add Class' ? 'class="active"' : '' %>
+      >ADD Class</a>
+    
     <% lessons.forEach( l => { %>
       <li>
         
-          <a href="/classes/<%= l._id %>"><%= l.title %></a>
+          <a class="classes" href="/classes/<%= l._id %>"><%= l.title %></a>
           
          </li><br>
   <% }) %>
-     
+</div>
   </tbody>
 </table>
 <%- include('../partials/footer') %> 
