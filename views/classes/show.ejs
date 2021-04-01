@@ -23,16 +23,19 @@
   </form>
 </section>
 <a href="/classes/<%= lesson._id %>/edit">Edit</a>
-<form action='/classes/<%= lesson._id%>' method='POST'>
-  <label>Review:</label>
-    <input type="text"  name="content">
-    <input type="number" name="rating" >
-    <input type="text" name="reviewer" hidden value="<%= user._id%>">
-    <input type="submit" value="Add review">
-</form>
+</p>
 
-<% let total = 0 %>
-<% lesson.reviews.forEach(r => { %>
+  <% let total = 0 %>
+  <% lesson.students.forEach(s => {%>
+  if(s.user._id === user._id) {
+    <form action='/classes/<%= lesson._id%>' method='POST'>
+      <label>Review:</label>
+        <input type="text"  name="content">
+        <input type="number" name="rating" >
+        <input type="text" name="reviewer" hidden value="<%= user._id%>">
+        <button type="submit" value="Add review">Submit</button>
+    </form>
+  <% lesson.reviews.forEach(r => { %>
   <% total+= r.rating %>
   <p>
     <%= r.rating %> - 
@@ -41,10 +44,10 @@
   </p>
   <p><%= r.content %></p>
 <% }) %>
+Average Rating: <%= total/lesson.reviews.length%> 
 <p>
-  
-  Average Rating: <%= total/lesson.reviews.length%> 
-</p>
- 
+
+  }  
+  <%}) %>
 
 <%- include('../partials/footer') %>

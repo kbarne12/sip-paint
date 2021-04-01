@@ -66,35 +66,38 @@ function deleteLesson (req, res) {
         res.redirect('/classes')
     })
 }
+const pictures = {
+    'Date Night': 'https://tse3.mm.bing.net/th?id=OIP.gAdeWO-awkFVY3zh5IENzwHaDt&pid=Api&P=0&w=300&h=300',
+    'Amatuer Night': 'https://www.artfunstudio.com/wp-content/uploads/2017/03/sip-and-paint-0933-2.jpg',
+    'Free paint': 'https://i.pinimg.com/originals/fb/f8/36/fbf8362cffa5dc61a9de2402936acdf0.jpg',
+    'Corporate Paint': 'https://www.artfunstudio.com/wp-content/uploads/2016/09/sip-and-paint-0315.jpg'
+    
+}
 function create (req, res) {
     Lesson.create(req.body, (err, lesson) => {
-        res.render("classes/show", { user: req.user, lesson, title: "lesson", }            
-        )
+        res.render("classes/show",
+        { user: req.user, lesson, title: "lesson", pictures}            
+    )
     })
 }
 function show (req, res) {
-    const pictures = {
-        'Date Night': 'https://tse3.mm.bing.net/th?id=OIP.gAdeWO-awkFVY3zh5IENzwHaDt&pid=Api&P=0&w=300&h=300',
-        'Amatuer Night': 'https://www.artfunstudio.com/wp-content/uploads/2017/03/sip-and-paint-0933-2.jpg',
-        'Free paint': 'https://i.pinimg.com/originals/fb/f8/36/fbf8362cffa5dc61a9de2402936acdf0.jpg',
-        'Corporate Paint': 'https://www.artfunstudio.com/wp-content/uploads/2016/09/sip-and-paint-0315.jpg'
-        
-    }
+
     Lesson.findById(req.params.id) 
     .populate('instructor')
     .populate({path: 'reviews', populate: {path: 'reviewer'}})
     .then((lesson) => {
         res.render('classes/show', {
-          user: req.user,
-          title: "Lesson Details",
-          lesson,
-          pictures
-          
-          
-
+            user: req.user,
+            title: "Lesson Details",
+            lesson,
+            pictures
+            
+            
+            
         })
     })
-    }
+}
+
 
 function newClass(req, res) {
     User.find({}, (err, users) => {
