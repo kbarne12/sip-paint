@@ -61,7 +61,9 @@ function create (req, res) {
 function show (req, res) {
     const pictures = {
         'Date Night': 'https://tse3.mm.bing.net/th?id=OIP.gAdeWO-awkFVY3zh5IENzwHaDt&pid=Api&P=0&w=300&h=300',
-        'Amatuer Night': 'https://www.artfunstudio.com/wp-content/uploads/2017/03/sip-and-paint-0933-2.jpg'
+        'Amatuer Night': 'https://www.artfunstudio.com/wp-content/uploads/2017/03/sip-and-paint-0933-2.jpg',
+        'Free paint': 'https://i.pinimg.com/originals/fb/f8/36/fbf8362cffa5dc61a9de2402936acdf0.jpg',
+        'Corporate Paint': 'https://www.artfunstudio.com/wp-content/uploads/2016/09/sip-and-paint-0315.jpg'
         
     }
     Lesson.findById(req.params.id) 
