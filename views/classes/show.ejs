@@ -9,9 +9,9 @@
   <div>Price: </div>
   <div>$<%= lesson.price %></div>
   <div>Instructor: </div>
-  <div><%= lesson.instructor._id %></div>
-  <div><%=user._id%></div>
+  <div><%= lesson.instructor.name %></div>
   <img class="classImg" src="<%=pictures[`${lesson.title}`] %>" alt="">
+  
 
   <form action="/classes/register/<%=lesson._id%>" method="POST">
     <input type="text" hidden name="students" value="<%=user._id%>">
@@ -28,12 +28,16 @@
     
 
 </section>
+<% if(lesson.instructor._id.toString() === user._id.toString()){%>
 <a href="/classes/<%= lesson._id %>/edit">Edit</a>
+<% }else{ %> 
+  <p></p>
+<%}%>
 </p>
 
   <% let total = 0 %>
-  <% lesson.students.forEach(s => {%>
-  if(s.user._id === user._id) {
+ 
+  <%if(lesson.students.includes(user._id)){%> 
     <form action='/classes/<%= lesson._id%>' method='POST'>
       <label>Review:</label>
         <input type="text"  name="content">
@@ -41,6 +45,8 @@
         <input type="text" name="reviewer" hidden value="<%= user._id%>">
         <button type="submit" value="Add review">Submit</button>
     </form>
+ <% } %> 
+ 
   <% lesson.reviews.forEach(r => { %>
   <% total+= r.rating %>
   <p>
@@ -53,7 +59,6 @@
 Average Rating: <%= total/lesson.reviews.length%> 
 <p>
 
-  }  
-  <%}) %>
+  
 
 <%- include('../partials/footer') %>
