@@ -34,7 +34,7 @@
       <% } %>
 
       <% if(lesson.instructor._id.toString() === user._id.toString()){%>
-      <a href="/classes/<%= lesson._id %>/edit">Edit</a>
+      <a class="edit" href="/classes/<%= lesson._id %>/edit">Edit</a>
       <% }else{ %> 
         <p></p>
       <%}%>
