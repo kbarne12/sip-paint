@@ -36,6 +36,7 @@ This app allows users to choose a class, regitster and or leave a review on that
 13.EJS
 14.Google OAuth
 15.Heroku
+16.Trello
 
    
 ### Credits:
