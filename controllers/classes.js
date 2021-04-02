@@ -114,7 +114,7 @@ function newClass(req, res) {
 function index(req, res) {
     Lesson.find({}, function(err, lessons){
     res.render('classes/index', {
-    title: "Classes",
+    title: "Sip & Paint",
     user: req.user, 
     lessons
 })

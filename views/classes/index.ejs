@@ -1,21 +1,38 @@
 <%- include('../partials/header') %> 
-<p>Welcome to <%= title %></p>
+<p class="welcome">Welcome to <%= title %></p>
 <table class="table" id='list'>
   
   <tbody>
     <div class="lessons">
-        <a class="addclass"
+      <div class="classPhotos">
+
+        <% lessons.forEach( l => { %>
+          <ul>
+            
+            <a class="classes" href="/classes/<%= l._id %>"><%= l.title %></a>
+              
+          </ul><br>
+      <% }) %>
+      <div class="slider">
+        <span id="slide-1"></span>
+        <span id="slide-2"></span>
+        <span id="slide-3"></span>
+        <div class="image-container">
+          <img src="https://i.imgur.com/MU2VCg4.jpg" class="slide" width="500" height="400" />
+          <img src="https://i.imgur.com/y0kF6Yd.jpg" class="slide" width="500" height="400" />
+          <img src="https://i.imgur.com/VuShGQD.jpg" class="slide" width="500" height="400" />
+        </div>
+        <div class="buttons">
+          <a href="#slide-1"></a>
+          <a href="#slide-2"></a>
+          <a href="#slide-3"></a>
+        </div>
+      </div>
+      </div>
+  <a class="addclass"
         href="/classes/new" 
         <%- title === 'Add Class' ? 'class="active"' : '' %>
       >ADD Class</a>
-    
-    <% lessons.forEach( l => { %>
-      <li>
-        
-          <a class="classes" href="/classes/<%= l._id %>"><%= l.title %></a>
-          
-         </li><br>
-  <% }) %>
 </div>
   </tbody>
 </table>

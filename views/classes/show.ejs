@@ -23,47 +23,51 @@
       <img class="photo" src="<%=pictures[`${lesson.title}`] %>" alt="">
     </div>
   </div>
-
-<%if(!lesson.students.includes(user._id)){%>
-  <form action="/classes/register/<%=lesson._id%>" method="POST">
-    <input type="text" hidden name="students" value="<%=user._id%>">
-    <button type="submit">Register</button>
-  </form>
-  <% } %>
-  
-    
-
 </section>
-<% if(lesson.instructor._id.toString() === user._id.toString()){%>
-<a href="/classes/<%= lesson._id %>/edit">Edit</a>
-<% }else{ %> 
-  <p></p>
-<%}%>
-</p>
+<section class="bottomlayout">
+  <div class="register">
+    <%if(!lesson.students.includes(user._id)){%>
+      <form action="/classes/register/<%=lesson._id%>" method="POST">
+        <input type="text" hidden name="students" value="<%=user._id%>">
+        <button type="submit">Register</button>
+      </form>
+      <% } %>
 
-  <% let total = 0 %>
- 
-  <%if(lesson.students.includes(user._id)){%> 
-    <form action='/classes/<%= lesson._id%>' method='POST'>
-      <label>Review:</label>
-        <input type="text"  name="content">
-        <input type="number" name="rating" >
-        <input type="text" name="reviewer" hidden value="<%= user._id%>">
-        <button type="submit" value="Add review">Submit</button>
-    </form>
- <% } %> 
- 
-  <% lesson.reviews.forEach(r => { %>
-  <% total+= r.rating %>
-  <p>
-    <%= r.rating %> - 
-    <img width="20" id="avatar" src="<%= r.reviewer.avatar %>" alt="">
-    <%= r.reviewer.name %>
-  </p>
-  <p><%= r.content %></p>
-<% }) %>
-Average Rating: <%= total/lesson.reviews.length%> 
-<p>
+      <% if(lesson.instructor._id.toString() === user._id.toString()){%>
+      <a href="/classes/<%= lesson._id %>/edit">Edit</a>
+      <% }else{ %> 
+        <p></p>
+      <%}%>
+      </p>
+  </div>
+  
+  <div class="reviews">
+    <% let total = 0 %>
+   
+    <%if(lesson.students.includes(user._id)){%> 
+      <form action='/classes/<%= lesson._id%>' method='POST'>
+        <label class='review-label'>Leave A Review:</label>
+          <input type="text"  name="content">
+          <input type="number" name="rating" >
+          <input type="text" name="reviewer" hidden value="<%= user._id%>">
+          <button type="submit" value="Add review">Submit</button>
+      </form>
+   <% } %> 
+      <div class="results">
+        <% lesson.reviews.forEach(r => { %>
+        <% total+= r.rating %>
+        <p>
+          Rating:  <%= r.rating %> - 
+          <img width="40" id="avatar" src="<%= r.reviewer.avatar %>" alt="">
+          <%= r.reviewer.name %>
+        </p>
+        <p>Review:  <%= r.content %></p>
+      <% }) %>
+      Average Rating: <%= total/lesson.reviews.length%> 
+      <p>
+      </div>
+  </div>
+</section>
 
   
 
