@@ -10,6 +10,8 @@ This app allows users to choose a class, regitster and or leave a review on that
 
 [Here is the link to my project](https://github.com/kbarne12/sip-paint.git)
 
+[Trello](https://trello.com/b/GRFAh5U8/unit-2-project)
+
 ## Images
 ![Sign-In Page](https://i.imgur.com/InoiKYx.png)
 
