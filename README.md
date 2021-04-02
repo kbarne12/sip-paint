@@ -5,13 +5,6 @@ By Kentrdrick Barnes
 This app allows users to choose a class, regitster and leave a review on that class. They can also create a custom class and make themselves the instrutor if they so choose. Instructors can also update or delete customized classes.
 
 
-# Welcome To Sip & Paint
-By Kentrdrick Barnes
-
-## Description
-This app allows users to choose a class, regitster and leave a review on that class. They can also create a custom class and make themselves the instrutor if they so choose. Instructors can also update or delete customized classes.
-
-
 ## Getting Started
 [Here is the link to Sip & Paint ](https://sip-paint.herokuapp.com/)
 
