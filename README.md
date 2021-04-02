@@ -2,7 +2,7 @@
 By Kentrdrick Barnes
 
 ## Description
-This app allows users to choose a class, regitster and leave a review on that class. They can also create a custom class and make themselves the instrutor if they so choose. Instructors can also update or delete customized classes.
+This app allows users to choose a class, regitster and or leave a review on that class. They can also create a custom class and make themselves the instrutor if they so choose. Instructors can also update or delete customized classes.
 
 
 ## Getting Started
